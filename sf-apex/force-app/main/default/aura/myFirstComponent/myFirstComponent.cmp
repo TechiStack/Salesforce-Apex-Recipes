@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" controller="GoogleDriveController" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="accessToken" type="String" />
+    <aura:attribute name="myRecordId" type="String" default="0010o00002MdhToAAJ" description="This is the record where we will temproary store the file"/>
+    
+    <lightning:card title="Google Drive Demo 6">
+        <lightning:button variant="brand" label="Google Drive Auth" title="Google Drive Auth" onclick="{! c.doAuth }" />
+        <hr/>
+        <p class="slds-p-horizontal_small">
+            <!--file upload part -->
+            <lightning:fileUpload label="upload file to Drive" name="fileUploader"
+                                  multiple="false" accept=".jpg, .png" recordId="0010o00002MdoWrAAJ" onuploadfinished="{!c.handleFilesChange}" />
+        </p>
+    </lightning:card>
+    
+</aura:component>

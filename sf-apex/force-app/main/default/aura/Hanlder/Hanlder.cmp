@@ -1,0 +1,34 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="Amount">
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    <aura:attribute name="data" type="object"/>
+    <aura:attribute name="Account_Title" type="String"/>
+   
+    
+    
+    
+    
+    <lightning:card  title="Bank Info ver 2.1">  
+        <div class="c-container">
+            <lightning:layout>
+                <lightning:layoutItem size="4" padding="around-small"> </lightning:layoutItem>
+                <lightning:layoutItem size="4" padding="around-small">
+                    <div class="custom-box">
+                        
+                        <p class="slds-p-horizontal_small">
+                            <div class="row">
+                                <lightning:input name="Bank_Account" label="Account will here" value="{!v.uiPkg__Bank_Name__c }"/>
+                                <br></br>
+                                <lightning:button variant="brand" label="Brand" title="Brand action" onclick="{! c.handleClick }" />
+                            </div>
+                        </p>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" padding="around-small"></lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </lightning:card>
+    
+    
+    
+    
+</aura:component>

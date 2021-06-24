@@ -1,0 +1,145 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="zoomLevel" type="Integer" />
+    <aura:attribute name="city" type="string" default="Washington"/>
+    <aura:attribute name="Address" type="string" default=""/>
+    <aura:attribute name="state" type="string" default="DC"/>
+    <aura:attribute name="showPop" type="boolean" default="false"/>
+    
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{! c.init }"/>
+    
+    <!-- the map component -->
+    
+    <aura:if isTrue="{!v.showPop}">
+       <div class="showPenel">
+        <div style="width: 26%;
+                    position: absolute;
+                    z-index: 100000000;
+                    float: right;
+                    margin-left: 74%;"
+              class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+            <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                <div class="slds-panel__section slds-has-divider--bottom">
+                    <div class="slds-media">
+                      <div class="slds-media__body" style="float:right">
+                            <div class="slds-button-group slds-m-top--small" role="group">
+                                <button class="slds-button slds-button--neutral slds-grow">Edit</button>
+                                <button class="slds-button slds-button--neutral slds-grow">Follow Up</button>
+                                <button onclick="{!c.exit}" class="slds-button slds-button--neutral slds-grow">Close</button>
+                                <button class="slds-button slds-button--icon-border-filled" title="More Actions">
+                                   <span class="slds-assistive-text">More Actions</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-panel__section">
+                    <h3 class="slds-text-heading--small slds-m-bottom--medium">Report Information.</h3>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Subject</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Follow up on &#x27;15 Contract</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Due Date</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">6/18/16</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                          <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Assigned TO</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Jason Dewar</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Name</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Adam Choi</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Related To</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Tesla Cloudhub + Anypoint Connectors</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Comments</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static slds-text-longform">Adam was open to doing more business in the 4th quarter. Follow up with marketing demo and email templates.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-panel__section">
+                    <h3 class="slds-text-heading--small slds-m-bottom--medium">Additional Information</h3>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Status</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Not Started</span>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                        <button class="slds-button slds-float--right slds-button--icon slds-button--icon-small" title="Edit this Field">
+                            <span class="slds-assistive-text">Edit this Field</span>
+                        </button>
+                        <span class="slds-form-element__label">Priority</span>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">Normal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           </div>
+    </aura:if>
+    <lightning:card   title="Find Me  -!">
+        <div  class="row" style="    width: 60%;
+                                margin: 14px;
+                                margin-top: -10px;">
+            <div class="slds slds-media__body">
+                <h2 class="header">Use the input field to search find me</h2>
+                <lightning:input value="{!v.Address}" name="address" label="Address" placeholder="type here..."/>
+                <div style="margin:5px">
+                    <lightning:button  variant="destructive" label="Search!" title="Search" onclick="{! c.find_me }"/>
+                    <lightning:button  variant="destructive" label="showslides" title="Search" onclick="{! c.slider }"/>
+                </div>
+                
+            </div>
+        </div>
+    </lightning:card>
+    
+    
+    
+    <lightning:map 
+                   mapMarkers="{! v.mapMarkers }" 
+                   zoomLevel="{!v.zoomLevel}" />
+    
+    
+    
+    
+</aura:component>
