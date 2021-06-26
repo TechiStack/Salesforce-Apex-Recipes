@@ -9,7 +9,7 @@ public with sharing class largeDV implements Queueable {
         if(offsetId  != null){
             this.offsetId = offsetId;
         }
-        this.objectToProcess = getRecordsToProcess(this.offsetId);
+        this.objectToProcess = getRecordsToProcess(this.offsetId); //get query records 
     
        
     }
@@ -20,7 +20,7 @@ public with sharing class largeDV implements Queueable {
 
 
 
-
+        
         id lastRecordId  = objectToProcess[objectToProcess.size()].id;
         //if the records procesed recall constrc
         largeDV newQuaueable = new largeDV(this.offsetId);
