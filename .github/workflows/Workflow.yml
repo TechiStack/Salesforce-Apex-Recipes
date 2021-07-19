@@ -1,6 +1,6 @@
 #.github/workflows/main.yml
 name: Update Apex
-on: pull_request
+on: [push]
 
 jobs:
   build:
