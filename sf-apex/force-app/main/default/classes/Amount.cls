@@ -1,5 +1,5 @@
 public with sharing  class Amount {
-    
+//Process created from here    
 public static  Amount__c bank  = new Amount__c();    
     
     @AuraEnabled   
