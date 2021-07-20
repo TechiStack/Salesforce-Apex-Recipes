@@ -13,6 +13,8 @@ jobs:
         run: 'echo ${{ secrets.DEVHUB_TOKEN}} > token.txt'
       - name: Change working dir
         run: 'cd sf-apex'
+      - name: Print Current Dir
+        run: 'pwd'   
       - name: Install Salesforce CLI
         run: |
           wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
