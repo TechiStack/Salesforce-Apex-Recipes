@@ -30,7 +30,7 @@ jobs:
         working-directory : "./sf-apex"
       - name: Push source
         run: 'sfdx force:source:push -u my-scratch'
-        working-directory : "./sf-apex"
+        #working-directory : "./sf-apex"
       - name: List orgs
         run: 'sfdx force:org:list'
       - name: Run tests
