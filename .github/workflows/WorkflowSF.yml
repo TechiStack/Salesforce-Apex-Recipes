@@ -12,7 +12,7 @@ jobs:
       - name: Write the token into a file
         run: 'echo ${{ secrets.DEVHUB_TOKEN}} > token.txt'
       - name: Change working dir
-        run: 'cd sf-apex'
+        run: 'cd /home/runner/work/Salesforce-Apex-Recipes/Salesforce-Apex-Recipes/sf-apex'
       - name: Print Current Dir
         run: 'pwd'   
       - name: Install Salesforce CLI
