@@ -27,8 +27,10 @@ jobs:
         run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d'
       - name: Create scratch org
         run: 'sfdx force:org:create -f config/project-scratch-def.json'
+        working-directory : "./sf-apex"
       - name: Push source
         run: 'sfdx force:source:push -u my-scratch'
+        working-directory : "./sf-apex"
       - name: List orgs
         run: 'sfdx force:org:list'
       - name: Run tests
