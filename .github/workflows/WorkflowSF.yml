@@ -28,12 +28,13 @@ jobs:
       - name: Create scratch org
         run: 'sfdx force:org:create -f config/project-scratch-def.json'
         working-directory : "./sf-apex"
-      - name: Push source
-        run: 'sfdx force:source:push -u my-scratch'
-        working-directory : "./sf-apex"
       - name: List orgs
         run: 'sfdx force:org:list'
         working-directory : "./sf-apex"
+      - name: Push source
+        run: 'sfdx force:source:push -u my-scratch'
+        working-directory : "./sf-apex"
+    
       - name: Run tests
         run: 'sfdx force:apex:test:run -u my-scratch --resultformat human'
       - name: Delete scratch org
