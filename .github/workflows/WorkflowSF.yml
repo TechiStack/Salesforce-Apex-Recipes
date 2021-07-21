@@ -28,7 +28,7 @@ jobs:
       #- name: Delete Existing scratch org
        # run: 'sfdx force:org:delete -u my-scratchGIT --noprompt'
       - name: Create scratch org
-        run: 'sfdx force:org:create -f config/project-scratch-def.json --setalias my-scratch'
+        run: 'sfdx force:org:create -f config/project-scratch-def.json --setalias my-scratchGIT'
         working-directory : "./sf-apex"
       - name: List orgs
         run: 'sfdx force:org:list'
