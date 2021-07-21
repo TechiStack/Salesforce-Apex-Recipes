@@ -25,6 +25,8 @@ jobs:
           ./sfdx-cli/install
       - name: Auth with the DevHub
         run: 'sfdx force:auth:sfdxurl:store -f token.txt -a DevHub -d'
+      - name: Delete Existing scratch org
+        run: 'sfdx force:org:delete -u my-scratchGIT --noprompt'
       - name: Create scratch org
         run: 'sfdx force:org:create -f config/project-scratch-def.json --setalias my-scratch'
         working-directory : "./sf-apex"
@@ -32,11 +34,11 @@ jobs:
         run: 'sfdx force:org:list'
         working-directory : "./sf-apex"
       - name: Push source
-        run: 'sfdx force:source:push -u my-scratch'
-        #working-directory : "./sf-apex"
+        run: 'sfdx force:source:push -u my-scratchGIT'
+        working-directory : "./sf-apex"
     
       - name: Run tests
-        run: 'sfdx force:apex:test:run -u my-scratch --resultformat human'
+        run: 'sfdx force:apex:test:run -u my-scratchGIT --resultformat human'
       - name: Delete scratch org
-        run: 'sfdx force:org:delete -u my-scratch --noprompt'
+        run: 'sfdx force:org:delete -u my-scratchGIT --noprompt'
         working-directory : "./sf-apex"
