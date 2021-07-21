@@ -37,8 +37,8 @@ jobs:
        # run: 'sfdx force:source:push -u my-scratchGIT'
         #working-directory : "./sf-apex"
     
-      - name: Run tests
-        run: 'sfdx force:apex:test:run -u my-scratchGIT --resultformat human'
+     # - name: Run tests
+      #  run: 'sfdx force:apex:test:run -u my-scratchGIT --resultformat human'
       - name: Delete scratch org
         run: 'sfdx force:org:delete -u my-scratchGIT --noprompt'
         working-directory : "./sf-apex"
