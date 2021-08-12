@@ -34,8 +34,8 @@ jobs:
       - name: List orgs
         run: 'sfdx force:org:list'
         working-directory : "./sf-apex"
-      - name: Push source
-        run: 'sfdx force:source:push -u my-scratchGIT'
+     # - name: Push source
+      #  run: 'sfdx force:source:push -u my-scratchGIT'
         #working-directory : "./sf-apex"
     
      # - name: Run tests
